@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{29D9B9AB-C64B-4FC5-8253-12D0BC60320D}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="..\AreaGraph\AreaGraph.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="AreaGraph">
+        <MSBuild Projects="..\AreaGraph\AreaGraph.dproj"/>
+    </Target>
+    <Target Name="AreaGraph:Clean">
+        <MSBuild Projects="..\AreaGraph\AreaGraph.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="AreaGraph:Make">
+        <MSBuild Projects="..\AreaGraph\AreaGraph.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="AreaGraph"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="AreaGraph:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="AreaGraph:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
